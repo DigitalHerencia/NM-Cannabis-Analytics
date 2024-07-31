@@ -1,4 +1,4 @@
-# Retail Analytics Dashboard for the New Mexico Cannabis Industry
+# A Retail Analytics Dashboard for the New Mexico Cannabis Industry
 
 ![alt text](./client/src/assets/splash2.jpg)
 
@@ -19,7 +19,7 @@ The Retail Analytics Dashboard is a comprehensive tool designed to provide dispe
 
 ## Table of Contents
 1. [Features](#features)
-2. [Technical Stack](#technical-stack)
+2. [Technology Stack](#technology-stack)
 3. [Installation](#installation)
 4. [Usage](#usage)
 5. [Screenshots](#screenshots)
@@ -46,16 +46,38 @@ The Retail Analytics Dashboard is a comprehensive tool designed to provide dispe
 > [!TIP]
 > Use your own MongoDB connection string in the `.env` file and load in your custom data.
 
-## Technical Stack
+## Technology Stack
 
 ![Tech Stack](./client/src/assets/Untitleddesign.jpg)
 
 <div align="center">
   <div style="display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 10px;">
 
-[![forthebadge](https://forthebadge.com/images/badges/made-with-react.svg)](https://forthebadge.com)
-[![forthebadge](https://forthebadge.com/images/badges/made-with-node.svg)](https://forthebadge.com)
-[![forthebadge](https://forthebadge.com/images/badges/made-with-mongodb.svg)](https://forthebadge.com)
+[![Made with React](https://img.shields.io/badge/Made%20with-React-61DAFB.svg?style=flat-square&logo=react&logoColor=white)](https://reactjs.org/)
+[![Made with Node.js](https://img.shields.io/badge/Made%20with-Node.js-339933.svg?style=flat-square&logo=node.js&logoColor=white)](https://nodejs.org/)
+[![Made with MongoDB](https://img.shields.io/badge/Made%20with-MongoDB-47A248.svg?style=flat-square&logo=mongodb&logoColor=white)](https://www.mongodb.com/)
+[![Made with Express](https://img.shields.io/badge/Made%20with-Express-000000.svg?style=flat-square&logo=express&logoColor=white)](https://expressjs.com/)
+
+</div>
+</div>
+
+<div align="center">
+  <div style="display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 10px;">
+
+[![Contains Material-UI](https://img.shields.io/badge/Contains-MUI-007FFF.svg?style=flat-square&logo=material-ui&logoColor=white)](https://mui.com/)
+[![Contains Redux](https://img.shields.io/badge/Contains-Redux-764ABC.svg?style=flat-square&logo=redux&logoColor=white)](https://redux.js.org/)
+[![Contains JWT](https://img.shields.io/badge/Contains-JWT-000000.svg?style=flat-square&logo=json-web-tokens&logoColor=white)](https://jwt.io/)
+
+</div>
+</div>
+
+<div align="center">
+  <div style="display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 10px;">
+
+
+[![Uses JavaScript](https://img.shields.io/badge/Uses-JavaScript-F7DF1E.svg?style=flat-square&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+[![Uses JSX](https://img.shields.io/badge/Uses-JSX-000000.svg?style=flat-square&logo=jsx&logoColor=white)](https://reactjs.org/docs/introducing-jsx.html)
+
 
 </div>
 </div>
@@ -121,38 +143,50 @@ To start the development server, run the following commands:
   <div align="center">
   <figure>
     <img src="./client/src/assets/Dashboard.jpeg" width="800" alt="Dashboard Overview" />
+    <figcaption> </figcaption>
   </figure>
   </div>
 
+  <br>
+  
   <div align="center">
-  <div style="display: flex; ; gap: 5px;">
+  <div style="display: flex;">
 
   <figure>
-    <img src="./client/src/assets/Breakdown.jpeg" width="400" alt="Breakdown by Category" />
+    <img src="./client/src/assets/Breakdown.jpeg" width="375" alt="Breakdown by Category" />
+    <figcaption>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</figcaption>
   </figure>
   <figure>
-    <img src="./client/src/assets/Rankings.jpeg" width="400" alt="Licensee Rankings" />
+    <img src="./client/src/assets/Rankings.jpeg" width="375" alt="Licensee Rankings" />
+    <figcaption>  </figcaption>
   </figure>
 
   </div>
   </div>
 
+  <br>
+  
   <div align="center">
-  <div style="display: flex; ; gap: 5px;">
+  <div style="display: flex;">
 
   <figure>
-    <img src="./client/src/assets/PerformanceComparison.jpeg" width="400" alt="Performance Comparison" />
+    <img src="./client/src/assets/PerformanceComparison.jpeg" width="375" alt="Performance Comparison" />
+    <figcaption>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</figcaption>
   </figure>
   <figure>
-    <img src="./client/src/assets/ProductComparison.jpeg" width="400" alt="Product Comparison" />
+    <img src="./client/src/assets/ProductComparison.jpeg" width="375" alt="Product Comparison" />
+    <figcaption>   </figcaption>
   </figure>
 
   </div>
   </div>
+
+<br>
 
 <div align="center">
   <figure>
     <img src="./client/src/assets/GeographicAnalysis.jpeg" width="800" alt="Geographic Analysis" />
+    <figcaption> </figcaption>
   </figure>
 </div>
 
@@ -160,7 +194,7 @@ To start the development server, run the following commands:
 Contributions are welcome! Please see our contributing guidelines before submitting a pull request.
 
 ## License
-This project is licensed under the [GNU General Public License version 3.0](https://www.gnu.org/licenses/agpl-3.0.en.html) - see the LICENSE file for details.
+This project is licensed under the [GNU General Public License version 3.0](https://www.gnu.org/licenses/agpl-3.0.en.html).
 
 ## Contact
 For any inquiries or feedback, please reach out to us at DigitalHerencia@Outlook.com
