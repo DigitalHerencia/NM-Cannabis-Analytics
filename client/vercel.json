@@ -2,6 +2,7 @@
     "version": 2,
     "builds": [
         {
+            "src": "src/index.tsx",
             "use": "@vercel/static-build",
             "config": {
                 "distDir": "build"
