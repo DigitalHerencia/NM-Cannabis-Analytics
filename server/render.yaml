@@ -5,13 +5,4 @@ services:
     plan: free
     buildCommand: npm install
     startCommand: npm start
-    envVars:
-      - key: NODE_ENV
-        value: production
-      - key: DATABASE_URL
-        value: <mongodb+srv://admin:vqWEWWOuWnEy62yy@cluster0.ggs62ao.mongodb.net/DH_PRO_0420_DB_05-15-2024>
-      - key: PORT
-        value: 5000
-      - key: CORS_ORIGIN
-        value: https://nm-cannabis-analytics.vercel.app
     autoDeploy: true
