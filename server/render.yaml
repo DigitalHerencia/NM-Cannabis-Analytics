@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: my-backend
+    plan: free
+    runtime: node
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        value: <Your MongoDB connection string>
+      - key: JWT_SECRET
+        value: <Your JWT Secret>

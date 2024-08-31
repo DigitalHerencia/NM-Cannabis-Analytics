@@ -1,55 +1,62 @@
+// @ts-nocheck
 const path = require("path")
+const HtmlWebpackPlugin = require("html-webpack-plugin")
+const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+const { CleanWebpackPlugin } = require("clean-webpack-plugin")
 
-module.exports = (env) => ({
-    mode: env.production ? "production" : "development", // Set the mode based on the environment
-    entry: "./src/index.js", // Entry point for your application
+const plugins = [
+    new CleanWebpackPlugin(),
+    new HtmlWebpackPlugin({
+        template: "./public/index.html",
+        favicon: "./public/favicon.ico",
+    }),
+    new MiniCssExtractPlugin({
+        filename: "[name].[contenthash].css",
+    }),
+]
+
+module.exports = {
+    entry: "./src/index.tsx",
     output: {
-        path: path.resolve(__dirname, "dist"), // Output directory
-        filename: "bundle.js", // Output bundle filename
+        path: path.resolve(__dirname, "dist"),
+        filename: "bundle.[contenthash].js",
+        publicPath: "/",
+    },
+    mode: "production",
+    resolve: {
+        extensions: [".tsx", ".ts", ".js", ".jsx"],
     },
     module: {
         rules: [
             {
-                test: /\.(js|jsx)$/, // Process both .js and .jsx files
-                exclude: /node_modules/, // Exclude node_modules to speed up the build process
-                use: {
-                    loader: "babel-loader",
-                    options: {
-                        presets: ["@babel/preset-env", "@babel/preset-react"], // Use Babel presets for modern JavaScript and React
-                    },
-                },
+                test: /\.tsx?$/,
+                use: "babel-loader",
+                exclude: /node_modules/,
             },
             {
-                test: /\.css$/, // For CSS files
-                use: ["style-loader", "css-loader"], // Loaders to process CSS files
+                test: /\.css$/,
+                use: [MiniCssExtractPlugin.loader, "css-loader"],
             },
             {
-                test: /\.(png|jpg|jpeg|gif|svg)$/, // For image files
-                use: [
-                    {
-                        loader: "file-loader",
-                        options: {
-                            name: "[name].[hash].[ext]", // Keep original name and append a hash for cache busting
-                            outputPath: "images", // Output directory for images
-                        },
-                    },
-                ],
+                test: /\.(png|jpe?g|gif|svg)$/,
+                type: "asset/resource",
             },
             {
-                test: /\.(woff|woff2|eot|ttf|otf)$/, // For font files
-                use: ["file-loader"], // File loader for fonts
+                test: /\.(woff(2)?|eot|ttf|otf)$/,
+                type: "asset/inline",
             },
         ],
     },
-    resolve: {
-        extensions: [".js", ".jsx"], // Resolve both .js and .jsx files
-    },
-    devtool: env.production ? "source-map" : "eval-source-map", // Use source maps in production
+    plugins: plugins, // Ensure plugins are used here
     devServer: {
-        contentBase: path.resolve(__dirname, "dist"), // Serve content from the dist directory
-        compress: true, // Enable gzip compression
-        port: 9000, // Port to run the dev server
-        historyApiFallback: true, // Enable history API fallback for React Router
-        hot: true, // Enable hot module replacement
+        historyApiFallback: true,
+        contentBase: path.resolve(__dirname, "public"),
+        open: true,
+        hot: true,
     },
-})
+    optimization: {
+        splitChunks: {
+            chunks: "all",
+        },
+    },
+}
