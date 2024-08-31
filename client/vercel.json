@@ -2,7 +2,7 @@
     "version": 2,
     "builds": [
         {
-            "src": "src/index.js",
+            "src": "src/index.tsx",
             "use": "@vercel/static-build",
             "config": {
                 "distDir": "build"
@@ -14,5 +14,10 @@
             "src": "/(.*)",
             "dest": "/index.html"
         }
-    ]
+    ],
+    "env": {
+        "REACT_APP_API_URL": "https://nm-cannabis-analytics.onrender.com",
+        "REACT_APP_MAPBOX_TOKEN": "<pk.eyJ1IjoiZGlnaXRhbGhlcmVuY2lhIiwiYSI6ImNseDl4ZGV6czFiOGcycnB2N3ZwZDIzMmgifQ.l8qJdOcn6Zh5V5oqy4qRVQ>",
+        "NODE_ENV": "production"
+    }
 }
