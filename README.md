@@ -1,4 +1,4 @@
-# Retail Analytics Dashboard for the New Mexico Cannabis Industry
+# Retail Analytics Dashboard for the New Mexico Cannabis Industry 
 
 ![alt text](./client/src/assets/splash2.jpg)
 
