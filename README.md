@@ -162,7 +162,7 @@ To start the development server, run the following commands:
 </div>
 
 > [!TIP]
-> Use your own MongoDB connection string in the .env file and load in your custom data:
+> Use your own MongoDB connection string in the .env file and load in your custom data!
 
 
 ### Contributing
