@@ -3,7 +3,7 @@
 ![alt text](./client/src/assets/splash2.jpg)
 
 ## Overview
-The Retail Analytics Dashboard is a comprehensive tool designed to provide dispensaries in New Mexico with actionable insights through interactive data visualizations. It focuses on competitive pricing, sales trends, and market share analysis, leveraging advanced data visualization and state management techniques.
+The disruptive and brand-new Digital Herencia Competitive Advantage Retail Analytics Dashboard is a comprehensive tool designed to provide dispensaries in New Mexico with actionable insights through interactive data visualizations. It focuses on competitive pricing, sales trends, and market share analysis, leveraging advanced data visualization and state management techniques.
 
 <div align="center">
 
@@ -125,7 +125,6 @@ To start the development server, run the following commands:
   <div align="center">
   <figure>
     <img src="./client/src/assets/Dashboard.jpeg" width="800" alt="Dashboard Overview" />
-    <figcaption>Dashboard Overview</figcaption>
   </figure>
   </div>
 
@@ -135,11 +134,9 @@ To start the development server, run the following commands:
 
   <figure>
     <img src="./client/src/assets/Breakdown.jpeg" width="400" alt="Breakdown by Category" />
-    <figcaption>Breakdown by Category</figcaption>
   </figure>
   <figure>
     <img src="./client/src/assets/Rankings.jpeg" width="400" alt="Licensee Rankings" />
-    <figcaption>Licensee Rankings</figcaption>
   </figure>
 
   </div>
@@ -150,11 +147,9 @@ To start the development server, run the following commands:
 
   <figure>
     <img src="./client/src/assets/PerformanceComparison.jpeg" width="400" alt="Performance Comparison" />
-    <figcaption>Performance Comparison</figcaption>
   </figure>
   <figure>
     <img src="./client/src/assets/ProductComparison.jpeg" width="400" alt="Product Comparison" />
-    <figcaption>Product Comparison</figcaption>
   </figure>
 
   </div>
@@ -163,7 +158,6 @@ To start the development server, run the following commands:
 <div align="center">
   <figure>
     <img src="./client/src/assets/GeographicAnalysis.jpeg" width="800" alt="Geographic Analysis" />
-    <figcaption>Geographic Analysis</figcaption>
   </figure>
 </div>
 
