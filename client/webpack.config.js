@@ -1,60 +1,57 @@
-const path = require("path")
+import { resolve as _resolve } from "path"
 
-module.exports = (/** @type {{ production: any; }} */ env) => {
-    return {
-        mode: env.production ? "production" : "development",
-        entry: "./src/index.js",
-        output: {
-            path: path.resolve(__dirname, "dist"),
-            filename: "bundle.js",
-        },
-        module: {
-            rules: [
-                {
-                    test: /\.(js|jsx)$/,
-                    exclude: /node_modules/,
-                    use: {
-                        loader: "babel-loader",
-                        options: {
-                            presets: [
-                                "@babel/preset-env",
-                                "@babel/preset-react",
-                            ],
-                        },
+const createWebpackConfig = (/** @type {{ production: any; }} */ env) => ({
+    mode: env.production ? "production" : "development",
+    entry: "./src/index.js",
+    output: {
+        path: _resolve(__dirname, "dist"),
+        filename: "bundle.js",
+    },
+    module: {
+        rules: [
+            {
+                test: /\.(js|jsx)$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: "babel-loader",
+                    options: {
+                        presets: ["@babel/preset-env", "@babel/preset-react"],
                     },
                 },
-                {
-                    test: /\.css$/,
-                    use: ["style-loader", "css-loader"],
-                },
-                {
-                    test: /\.(png|jpg|jpeg|gif|svg)$/,
-                    use: [
-                        {
-                            loader: "file-loader",
-                            options: {
-                                name: "[name].[hash].[ext]",
-                                outputPath: "images",
-                            },
+            },
+            {
+                test: /\.css$/,
+                use: ["style-loader", "css-loader"],
+            },
+            {
+                test: /\.(png|jpg|jpeg|gif|svg)$/,
+                use: [
+                    {
+                        loader: "file-loader",
+                        options: {
+                            name: "[name].[hash].[ext]",
+                            outputPath: "images",
                         },
-                    ],
-                },
-                {
-                    test: /\.(woff|woff2|eot|ttf|otf)$/,
-                    use: ["file-loader"],
-                },
-            ],
-        },
-        resolve: {
-            extensions: [".js", ".jsx"],
-        },
-        devtool: env.production ? "source-map" : "eval-source-map",
-        devServer: {
-            contentBase: path.resolve(__dirname, "dist"),
-            compress: true,
-            port: 5000,
-            historyApiFallback: true,
-            hot: true,
-        },
-    }
-}
+                    },
+                ],
+            },
+            {
+                test: /\.(woff|woff2|eot|ttf|otf)$/,
+                use: ["file-loader"],
+            },
+        ],
+    },
+    resolve: {
+        extensions: [".js", ".jsx"],
+    },
+    devtool: env.production ? "source-map" : "eval-source-map",
+    devServer: {
+        contentBase: _resolve(__dirname, "dist"),
+        compress: true,
+        port: 5000,
+        historyApiFallback: true,
+        hot: true,
+    },
+})
+
+export default createWebpackConfig
