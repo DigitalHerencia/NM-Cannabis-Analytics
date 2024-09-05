@@ -1,57 +1,41 @@
-import { resolve as _resolve } from "path"
-
-const createWebpackConfig = (/** @type {{ production: any; }} */ env) => ({
-    mode: env.production ? "production" : "development",
-    entry: "./src/index.js",
-    output: {
-        path: _resolve(__dirname, "dist"),
-        filename: "bundle.js",
-    },
-    module: {
-        rules: [
-            {
-                test: /\.(js|jsx)$/,
-                exclude: /node_modules/,
-                use: {
-                    loader: "babel-loader",
-                    options: {
-                        presets: ["@babel/preset-env", "@babel/preset-react"],
-                    },
-                },
-            },
-            {
-                test: /\.css$/,
-                use: ["style-loader", "css-loader"],
-            },
-            {
-                test: /\.(png|jpg|jpeg|gif|svg)$/,
-                use: [
-                    {
-                        loader: "file-loader",
-                        options: {
-                            name: "[name].[hash].[ext]",
-                            outputPath: "images",
-                        },
-                    },
-                ],
-            },
-            {
-                test: /\.(woff|woff2|eot|ttf|otf)$/,
-                use: ["file-loader"],
-            },
-        ],
-    },
-    resolve: {
-        extensions: [".js", ".jsx"],
-    },
-    devtool: env.production ? "source-map" : "eval-source-map",
-    devServer: {
-        contentBase: _resolve(__dirname, "dist"),
-        compress: true,
-        port: 5000,
-        historyApiFallback: true,
-        hot: true,
-    },
-})
-
-export default createWebpackConfig
+import { join, resolve as _resolve } from 'path';
+export const mode = 'development';
+export const entry = join(__dirname, 'app', 'index');
+export const watch = true;
+export const output = {
+  path: join(__dirname, 'dist'),
+  publicPath: '/dist/',
+  filename: "bundle.js",
+  chunkFilename: '[name].js'
+};
+export const module = {
+  rules: [{
+    test: /.jsx?$/,
+    include: [
+      _resolve(__dirname, 'app')
+    ],
+    exclude: [
+      _resolve(__dirname, 'node_modules')
+    ],
+    loader: 'babel-loader',
+    options: {
+      presets: [
+        ["@babel/env", {
+          "targets": {
+            "browsers": "last 2 chrome versions"
+          }
+        }]
+      ]
+    }
+  }]
+};
+export const resolve = {
+  extensions: ['.json', '.js', '.jsx']
+};
+export const devtool = 'source-map';
+export const devServer = {
+  contentBase: join(__dirname, '/dist/'),
+  inline: true,
+  host: 'localhost',
+  port: 8080,
+};
