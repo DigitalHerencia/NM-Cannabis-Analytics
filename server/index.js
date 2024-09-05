@@ -1,5 +1,4 @@
 // @ts-nocheck
-import bodyParser from "body-parser"
 import cors from "cors"
 import dotenv from "dotenv"
 import express from "express"
@@ -21,9 +20,14 @@ app.use(express.json())
 app.use(helmet())
 app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }))
 app.use(morgan("common"))
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(cors())
+app.use(express.urlencoded({ extended: false }))
+
+// Restricting CORS to the Vercel domain
+app.use(
+    cors({
+        origin: "https://nm-cannabis-analytics.vercel.app/", // Replace with your actual Vercel domain
+    })
+)
 
 // Registering Routes
 app.use("/users", usersRoute)
@@ -49,3 +53,9 @@ mongoose
 
 const PORT = process.env.PORT || 5000
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`))
+
+// Error handling middleware
+app.use((err, req, res, next) => {
+    console.error(err.stack)
+    res.status(500).send("Something broke!")
+})
