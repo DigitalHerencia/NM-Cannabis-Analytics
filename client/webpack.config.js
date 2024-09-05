@@ -1,6 +1,6 @@
 const path = require("path")
 
-module.exports = (env) => {
+module.exports = (/** @type {{ production: any; }} */ env) => {
     return {
         mode: env.production ? "production" : "development",
         entry: "./src/index.js",
@@ -52,7 +52,7 @@ module.exports = (env) => {
         devServer: {
             contentBase: path.resolve(__dirname, "dist"),
             compress: true,
-            port: 9000,
+            port: 5000,
             historyApiFallback: true,
             hot: true,
         },
