@@ -1,6 +1,6 @@
 const path = require("path")
 
-module.exports = (env) => ({
+module.exports = (/** @type {{ production: any; }} */ env) => ({
     mode: env.production ? "production" : "development", // Set the mode based on the environment
     entry: "./src/index.js", // Entry point for your application
     output: {
