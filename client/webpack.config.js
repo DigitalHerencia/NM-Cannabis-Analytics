@@ -1,11 +1,10 @@
-/* eslint-disable import/no-anonymous-default-export */
-import { resolve as _resolve } from "path"
+const path = require("path")
 
 export default (/** @type {{ production: any; }} */ env) => ({
     mode: env.production ? "production" : "development", // Set the mode based on the environment
     entry: "./src/index.js", // Entry point for your application
     output: {
-        path: _resolve(__dirname, "dist"), // Output directory
+        path: path.resolve(__dirname, "dist"), // Output directory
         filename: "bundle.js", // Output bundle filename
     },
     module: {
@@ -47,7 +46,7 @@ export default (/** @type {{ production: any; }} */ env) => ({
     },
     devtool: env.production ? "source-map" : "eval-source-map", // Use source maps in production
     devServer: {
-        contentBase: _resolve(__dirname, "dist"), // Serve content from the dist directory
+        contentBase: path.resolve(__dirname, "dist"), // Serve content from the dist directory
         compress: true, // Enable gzip compression
         port: 9000, // Port to run the dev server
         historyApiFallback: true, // Enable history API fallback for React Router
