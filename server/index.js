@@ -21,13 +21,7 @@ app.use(helmet())
 app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }))
 app.use(morgan("common"))
 app.use(express.urlencoded({ extended: false }))
-
-// Restricting CORS to the Vercel domain
-app.use(
-    cors({
-        origin: "https://nm-cannabis-analytics.vercel.app/", // Replace with your actual Vercel domain
-    })
-)
+app.use(cors())
 
 // Registering Routes
 app.use("/users", usersRoute)
