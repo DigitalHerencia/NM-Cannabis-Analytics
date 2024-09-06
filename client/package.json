@@ -48,10 +48,10 @@
         "webpack-cli": "^5.1.4"
     },
     "scripts": {
-        "start": "react-scripts start",
-        "build": "webpack --config webpack.config.js",
-        "test": "react-scripts test",
-        "eject": "react-scripts eject"
+        "start": "node index.js",
+        "build": "npm install && npm run build",
+        "clientinstall": "cd ../client && npm install",
+        "heroku-postbuild": "npm install --prefix client && npm run build --prefix client"
     },
     "eslintConfig": {
         "extends": [
