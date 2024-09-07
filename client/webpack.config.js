@@ -10,7 +10,7 @@ const TerserPlugin = require("terser-webpack-plugin") // Minifying JS
 const { DefinePlugin: _DefinePlugin } = require("webpack")
 const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer") // Optional, to analyze bundle size
 
-export default (env) => {
+module.exports = (env) => {
     const isProduction = env.production // flag for production
 
     return {
