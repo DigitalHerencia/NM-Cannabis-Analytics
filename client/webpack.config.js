@@ -1,22 +1,23 @@
 /* eslint-disable no-undef */
 /* eslint-disable import/no-anonymous-default-export */
+/* eslint-disable no-unused-vars */
 // @ts-nocheck
-const { CleanWebpackPlugin } = require("clean-webpack-plugin") // For cleaning up previous builds
-const CssMinimizerPlugin = require("css-minimizer-webpack-plugin") // Minifying CSS
-const HtmlWebpackPlugin = require("html-webpack-plugin") // For generating HTML file
-const MiniCssExtractPlugin = require("mini-css-extract-plugin") // For extracting CSS
-const { resolve: _resolve, join } = require("path")
-const TerserPlugin = require("terser-webpack-plugin") // Minifying JS
-const { DefinePlugin: _DefinePlugin } = require("webpack")
-const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer") // Optional, to analyze bundle size
+import * as cleanWebpackPlugin from "clean-webpack-plugin"; // For cleaning up previous builds
+import CssMinimizerPlugin from "css-minimizer-webpack-plugin"; // Minifying CSS
+import HtmlWebpackPlugin from "html-webpack-plugin"; // For generating HTML file
+import MiniCssExtractPlugin from "mini-css-extract-plugin"; // For extracting CSS
+import path from "path";
+import TerserPlugin from "terser-webpack-plugin"; // Minifying JS
+import webpack from "webpack";
+import webpackBundleAnalyzer from "webpack-bundle-analyzer"; // Optional, to analyze bundle size
 
-module.exports = (env) => {
+export default function (env) {
     const isProduction = env.production // flag for production
 
     return {
         entry: "./src/index.js",
         output: {
-            path: _resolve(__dirname, "dist"),
+            path: path._resolve(__dirname, "dist"),
             filename: "[name].[contenthash].js",
             publicPath: "/",
         },
@@ -38,12 +39,18 @@ module.exports = (env) => {
                 },
                 {
                     test: /\.(css|scss)$/,
-                    use: [
+                    _use: [
                         _loader,
                         "css-loader",
                         "postcss-loader",
                         "sass-loader",
                     ],
+                    get use() {
+                        return this._use
+                    },
+                    set use(value) {
+                        this._use = value
+                    },
                 },
                 {
                     test: /\.(png|jpg|gif|svg)$/,
@@ -64,7 +71,7 @@ module.exports = (env) => {
             ],
         },
         plugins: [
-            new CleanWebpackPlugin(),
+            new cleanWebpackPlugin.CleanWebpackPlugin(),
             new HtmlWebpackPlugin({
                 template: "./public/index.html",
                 favicon: "./public/favicon.ico",
@@ -77,12 +84,12 @@ module.exports = (env) => {
             new MiniCssExtractPlugin({
                 filename: "[name].[contenthash].css",
             }),
-            new _DefinePlugin({
+            new webpack._DefinePlugin({
                 "process.env.NODE_ENV": JSON.stringify(
                     isProduction ? "production" : "development"
                 ),
             }),
-            isProduction && new BundleAnalyzerPlugin(),
+            isProduction && new webpackBundleAnalyzer.BundleAnalyzerPlugin(),
         ].filter(Boolean),
         resolve: {
             extensions: [".js", ".jsx"],
@@ -106,7 +113,7 @@ module.exports = (env) => {
         },
         devServer: {
             historyApiFallback: true,
-            static: join(__dirname, "public"),
+            static: path.join(__dirname, "public"),
             compress: true,
             port: 3000,
             hot: true,
@@ -137,3 +144,4 @@ module.exports = (env) => {
         },
     }
 }
+
