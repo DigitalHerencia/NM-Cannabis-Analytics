@@ -1,15 +1,14 @@
+/* eslint-disable no-undef */
 /* eslint-disable import/no-anonymous-default-export */
 // @ts-nocheck
-import { CleanWebpackPlugin } from "clean-webpack-plugin" // For cleaning up previous builds
-import CssMinimizerPlugin from "css-minimizer-webpack-plugin" // Minifying CSS
-import HtmlWebpackPlugin from "html-webpack-plugin" // For generating HTML file
-import MiniCssExtractPlugin, {
-    loader as _loader,
-} from "mini-css-extract-plugin" // For extracting CSS
-import { resolve as _resolve, join } from "path"
-import TerserPlugin from "terser-webpack-plugin" // Minifying JS
-import { DefinePlugin as _DefinePlugin } from "webpack"
-import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer" // Optional, to analyze bundle size
+const { CleanWebpackPlugin } = require("clean-webpack-plugin") // For cleaning up previous builds
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin") // Minifying CSS
+const HtmlWebpackPlugin = require("html-webpack-plugin") // For generating HTML file
+const MiniCssExtractPlugin = require("mini-css-extract-plugin") // For extracting CSS
+const { resolve: _resolve, join } = require("path")
+const TerserPlugin = require("terser-webpack-plugin") // Minifying JS
+const { DefinePlugin: _DefinePlugin } = require("webpack")
+const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer") // Optional, to analyze bundle size
 
 export default (env) => {
     const isProduction = env.production // flag for production

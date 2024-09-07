@@ -164,18 +164,21 @@ export { calendarSlice, chartSlice, comparisonsSlice, kpiSlice, productsSlice };
 
 // Store Configuration
 const store = configureStore({
-  reducer: {
-    global: globalSlice.reducer,
-    kpi: kpiSlice.reducer,
-    calendar: calendarSlice.reducer,
-    products: productsSlice.reducer,
-    comparison: comparisonsSlice.reducer,
-    chart: chartSlice.reducer,
-    [api.reducerPath]: api.reducer,
-  },
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({ serializableCheck: false }).concat(api.middleware),
-});
+    reducer: {
+        global: globalSlice.reducer,
+        kpi: kpiSlice.reducer,
+        calendar: calendarSlice.reducer,
+        products: productsSlice.reducer,
+        comparison: comparisonsSlice.reducer,
+        chart: chartSlice.reducer,
+        [api.reducerPath]: api.reducer,
+    },
+    middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware({ serializableCheck: false }).concat(
+            api.middleware
+        ),
+    devTools: false,
+})
 
 setupListeners(store.dispatch);
 
