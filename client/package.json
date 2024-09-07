@@ -10,7 +10,6 @@
         "@fullcalendar/list": "^6.1.14",
         "@fullcalendar/react": "^6.1.14",
         "@fullcalendar/timegrid": "^6.1.14",
-        "@fvilers/disable-react-devtools": "^1.3.0",
         "@mui/icons-material": "^5.15.19",
         "@mui/material": "^5.15.19",
         "@mui/system": "^5.15.19",

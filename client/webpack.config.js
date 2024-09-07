@@ -1,8 +1,8 @@
 // @ts-nocheck
-import { CleanWebpackPlugin } from "clean-webpack-plugin" // For cleaning up previous builds
+import { CleanWebpackPlugin } from "clean-webpack-plugin"; // For cleaning up previous builds
 import CssMinimizerPlugin from "css-minimizer-webpack-plugin"
-import HtmlWebpackPlugin from "html-webpack-plugin" // For generating HTML file
-import MiniCssExtractPlugin from "mini-css-extract-plugin" // For extracting CSS
+import HtmlWebpackPlugin from "html-webpack-plugin"; // For generating HTML file
+import MiniCssExtractPlugin from "mini-css-extract-plugin"; // For extracting CSS
 import path from "path"
 import TerserPlugin from "terser-webpack-plugin"
 import webpack from "webpack"
@@ -14,7 +14,7 @@ export default function WebpackConfig(env) {
     return {
         entry: "./src/index.js",
         output: {
-            path: path.resolve(__dirname, "dist"),
+            path: (__dirname, "dist"),
             filename: "[name].[contenthash].js",
             publicPath: "/",
         },
