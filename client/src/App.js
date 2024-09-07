@@ -1,5 +1,5 @@
 import { CssBaseline, ThemeProvider } from "@mui/material";
-import { createTheme } from "@mui/material/styles";
+import { createTheme } from "@mui/material/styles/index.js"
 import React, { useMemo } from "react"
 import { useSelector } from "react-redux"
 import { BrowserRouter, Route, Routes } from "react-router-dom"
