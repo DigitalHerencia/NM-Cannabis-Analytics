@@ -1,12 +1,11 @@
-// @ts-nocheck
-import { CleanWebpackPlugin } from "clean-webpack-plugin"; // For cleaning up previous builds
+import { CleanWebpackPlugin } from "clean-webpack-plugin" // For cleaning up previous builds
 import CssMinimizerPlugin from "css-minimizer-webpack-plugin"
-import HtmlWebpackPlugin from "html-webpack-plugin"; // For generating HTML file
-import MiniCssExtractPlugin from "mini-css-extract-plugin"; // For extracting CSS
-import path from "path";
-import TerserPlugin from "terser-webpack-plugin";
-import webpack from "webpack";
-import webpackBundleAnalyzer from "webpack-bundle-analyzer"; // Optional, to analyze bundle size
+import HtmlWebpackPlugin from "html-webpack-plugin" // For generating HTML file
+import MiniCssExtractPlugin from "mini-css-extract-plugin" // For extracting CSS
+import path from "path"
+import TerserPlugin from "terser-webpack-plugin"
+import webpack from "webpack"
+import webpackBundleAnalyzer from "webpack-bundle-analyzer" // Optional, to analyze bundle size
 
 export default function WebpackConfig(env) {
     const isProduction = env.production // flag for production
