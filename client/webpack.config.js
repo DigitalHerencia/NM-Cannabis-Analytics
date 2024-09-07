@@ -154,7 +154,7 @@ export default (env) => {
                 })
 
                 return middlewares
-            },
+        },
         },
     }
 }
