@@ -1,17 +1,14 @@
-/* eslint-disable no-undef */
-/* eslint-disable import/no-anonymous-default-export */
-/* eslint-disable no-unused-vars */
 // @ts-nocheck
-import * as cleanWebpackPlugin from "clean-webpack-plugin"; // For cleaning up previous builds
-import CssMinimizerPlugin from "css-minimizer-webpack-plugin"; // Minifying CSS
-import HtmlWebpackPlugin from "html-webpack-plugin"; // For generating HTML file
-import MiniCssExtractPlugin from "mini-css-extract-plugin"; // For extracting CSS
-import path from "path";
-import TerserPlugin from "terser-webpack-plugin"; // Minifying JS
-import webpack from "webpack";
-import webpackBundleAnalyzer from "webpack-bundle-analyzer"; // Optional, to analyze bundle size
+import { CleanWebpackPlugin } from "clean-webpack-plugin" // For cleaning up previous builds
+import CssMinimizerPlugin from "css-minimizer-webpack-plugin"
+import HtmlWebpackPlugin from "html-webpack-plugin" // For generating HTML file
+import MiniCssExtractPlugin from "mini-css-extract-plugin" // For extracting CSS
+import path from "path"
+import TerserPlugin from "terser-webpack-plugin"
+import webpack from "webpack"
+import webpackBundleAnalyzer from "webpack-bundle-analyzer" // Optional, to analyze bundle size
 
-export default function (env) {
+export default function WebpackConfig(env) {
     const isProduction = env.production // flag for production
 
     return {
@@ -40,7 +37,7 @@ export default function (env) {
                 {
                     test: /\.(css|scss)$/,
                     _use: [
-                        _loader,
+                        MiniCssExtractPlugin.loader,
                         "css-loader",
                         "postcss-loader",
                         "sass-loader",
@@ -71,7 +68,7 @@ export default function (env) {
             ],
         },
         plugins: [
-            new cleanWebpackPlugin.CleanWebpackPlugin(),
+            new CleanWebpackPlugin(),
             new HtmlWebpackPlugin({
                 template: "./public/index.html",
                 favicon: "./public/favicon.ico",
@@ -84,7 +81,7 @@ export default function (env) {
             new MiniCssExtractPlugin({
                 filename: "[name].[contenthash].css",
             }),
-            new webpack._DefinePlugin({
+            new webpack.DefinePlugin({
                 "process.env.NODE_ENV": JSON.stringify(
                     isProduction ? "production" : "development"
                 ),
@@ -117,10 +114,10 @@ export default function (env) {
             compress: true,
             port: 3000,
             hot: true,
-            setupMiddlewares: (middlewares, devServer) => {
+            setupMiddlewares: (middlewares, _devServer) => {
                 middlewares.unshift({
                     name: "custom-before-middleware",
-                    middleware: function (req, res, next) {
+                    middleware: function (_req, _res, next) {
                         console.log("Middleware before Webpack setup")
                         next()
                     },
@@ -128,7 +125,7 @@ export default function (env) {
 
                 middlewares.push({
                     name: "custom-after-middleware",
-                    middleware: function (req, res, next) {
+                    middleware: function (_req, _res, next) {
                         console.log("Middleware after Webpack setup")
                         next()
                     },
@@ -144,4 +141,3 @@ export default function (env) {
         },
     }
 }
-
