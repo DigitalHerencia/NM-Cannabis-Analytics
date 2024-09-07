@@ -1,4 +1,4 @@
-import { CssBaseline, ThemeProvider } from "@mui/material";
+import { CssBaseline, ThemeProvider } from "@mui/material/index.js"
 import { createTheme } from "@mui/material/styles/index.js"
 import React, { useMemo } from "react"
 import { useSelector } from "react-redux"
@@ -80,4 +80,4 @@ function App() {
     )
 }
 
-export default App;
+export default App
