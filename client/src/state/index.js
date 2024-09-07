@@ -1,6 +1,6 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
 import { setupListeners } from "@reduxjs/toolkit/query";
-import { api } from "./api";
+import { api } from "./api.js"
 
 // Global Slice for UI mode
 const globalInitialState = {
