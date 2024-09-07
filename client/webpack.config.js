@@ -1,19 +1,23 @@
+/* eslint-disable import/no-anonymous-default-export */
+// @ts-nocheck
 import { CleanWebpackPlugin } from "clean-webpack-plugin" // For cleaning up previous builds
-import CssMinimizerPlugin from "css-minimizer-webpack-plugin"
+import CssMinimizerPlugin from "css-minimizer-webpack-plugin" // Minifying CSS
 import HtmlWebpackPlugin from "html-webpack-plugin" // For generating HTML file
-import MiniCssExtractPlugin from "mini-css-extract-plugin" // For extracting CSS
-import path from "path"
-import TerserPlugin from "terser-webpack-plugin"
-import webpack from "webpack"
-import webpackBundleAnalyzer from "webpack-bundle-analyzer" // Optional, to analyze bundle size
+import MiniCssExtractPlugin, {
+    loader as _loader,
+} from "mini-css-extract-plugin" // For extracting CSS
+import { resolve as _resolve, join } from "path"
+import TerserPlugin from "terser-webpack-plugin" // Minifying JS
+import { DefinePlugin as _DefinePlugin } from "webpack"
+import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer" // Optional, to analyze bundle size
 
-export default function WebpackConfig(env) {
+export default (env) => {
     const isProduction = env.production // flag for production
 
     return {
         entry: "./src/index.js",
         output: {
-            path: path.resolve(__dirname, "dist"),
+            path: _resolve(__dirname, "dist"),
             filename: "[name].[contenthash].js",
             publicPath: "/",
         },
@@ -36,7 +40,7 @@ export default function WebpackConfig(env) {
                 {
                     test: /\.(css|scss)$/,
                     use: [
-                        MiniCssExtractPlugin.loader,
+                        _loader,
                         "css-loader",
                         "postcss-loader",
                         "sass-loader",
@@ -74,12 +78,12 @@ export default function WebpackConfig(env) {
             new MiniCssExtractPlugin({
                 filename: "[name].[contenthash].css",
             }),
-            new webpack.DefinePlugin({
+            new _DefinePlugin({
                 "process.env.NODE_ENV": JSON.stringify(
                     isProduction ? "production" : "development"
                 ),
             }),
-            isProduction && new webpackBundleAnalyzer.BundleAnalyzerPlugin(),
+            isProduction && new BundleAnalyzerPlugin(),
         ].filter(Boolean),
         resolve: {
             extensions: [".js", ".jsx"],
@@ -103,7 +107,7 @@ export default function WebpackConfig(env) {
         },
         devServer: {
             historyApiFallback: true,
-            static: path.join(__dirname, "public"),
+            static: join(__dirname, "public"),
             compress: true,
             port: 3000,
             hot: true,
