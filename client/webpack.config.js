@@ -14,7 +14,7 @@ export default function WebpackConfig(env) {
     return {
         entry: "./src/index.js",
         output: {
-            path: path._resolve(__dirname, "dist"),
+            path: path.resolve(__dirname, "dist"),
             filename: "[name].[contenthash].js",
             publicPath: "/",
         },
@@ -36,18 +36,12 @@ export default function WebpackConfig(env) {
                 },
                 {
                     test: /\.(css|scss)$/,
-                    _use: [
+                    use: [
                         MiniCssExtractPlugin.loader,
                         "css-loader",
                         "postcss-loader",
                         "sass-loader",
                     ],
-                    get use() {
-                        return this._use
-                    },
-                    set use(value) {
-                        this._use = value
-                    },
                 },
                 {
                     test: /\.(png|jpg|gif|svg)$/,
@@ -114,10 +108,10 @@ export default function WebpackConfig(env) {
             compress: true,
             port: 3000,
             hot: true,
-            setupMiddlewares: (middlewares, _devServer) => {
+            setupMiddlewares: (middlewares, devServer) => {
                 middlewares.unshift({
                     name: "custom-before-middleware",
-                    middleware: function (_req, _res, next) {
+                    middleware: function (req, res, next) {
                         console.log("Middleware before Webpack setup")
                         next()
                     },
@@ -125,7 +119,7 @@ export default function WebpackConfig(env) {
 
                 middlewares.push({
                     name: "custom-after-middleware",
-                    middleware: function (_req, _res, next) {
+                    middleware: function (req, res, next) {
                         console.log("Middleware after Webpack setup")
                         next()
                     },
