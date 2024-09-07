@@ -3,10 +3,10 @@ import { CleanWebpackPlugin } from "clean-webpack-plugin"; // For cleaning up pr
 import CssMinimizerPlugin from "css-minimizer-webpack-plugin"
 import HtmlWebpackPlugin from "html-webpack-plugin"; // For generating HTML file
 import MiniCssExtractPlugin from "mini-css-extract-plugin"; // For extracting CSS
-import path from "path"
-import TerserPlugin from "terser-webpack-plugin"
-import webpack from "webpack"
-import webpackBundleAnalyzer from "webpack-bundle-analyzer" // Optional, to analyze bundle size
+import path from "path";
+import TerserPlugin from "terser-webpack-plugin";
+import webpack from "webpack";
+import webpackBundleAnalyzer from "webpack-bundle-analyzer"; // Optional, to analyze bundle size
 
 export default function WebpackConfig(env) {
     const isProduction = env.production // flag for production
@@ -14,7 +14,7 @@ export default function WebpackConfig(env) {
     return {
         entry: "./src/index.js",
         output: {
-            path: (__dirname, "dist"),
+            path: path.resolve(__dirname, "dist"),
             filename: "[name].[contenthash].js",
             publicPath: "/",
         },
